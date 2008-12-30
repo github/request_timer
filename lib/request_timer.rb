@@ -8,7 +8,7 @@ module RequestTimer
   module Helper
     def request_time(text_to_wrap = nil)
       time = "%.5f" % (Time.now - $rails_request_timer) if $rails_request_timer
-      host = `hostname`
+      host = `hostname`.chomp
 
       if text_to_wrap
         content_tag :span, text_to_wrap, :title => "#{time}s from #{host}", :id => '_rrt'
